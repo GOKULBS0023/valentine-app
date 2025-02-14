@@ -17,24 +17,67 @@ function App() {
   useEffect(() => {
     sendResponse(response);
   }, [response]);
-
+  const [accepted, setAccepted] = useState(false);
+  const rejectResponses = [
+    "Poda Venna  👊",
+    "Are you sure?",
+    "Pookie please 🥺👉👈",
+    "Think again! 😏",
+    "Pretty please 🧐",
+    "Are you absolutely sure? 🤨",
+    "You’re gonna regret this 😤",
+    "You’re joking… right? 👀",
+    "Even AI has feelings! 🤖💔",
+    "Last chance, think wisely! 🧐",
+    "Gonna miss me!!",
+    "C'mon, say YES! 🥰",
+  ];
+  const [rejectedCount, setRejectedCount] = useState(0);
   return (
     <div className="container">
       <img
-        src="https://media.tenor.com/KDqnVi_7tZoAAAAj/panda-love.gif"
+        src={
+          accepted
+            ? "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
+            : "https://media.tenor.com/KDqnVi_7tZoAAAAj/panda-love.gif"
+        }
         alt="Cute Panda"
         className="panda-img"
       />
-      <h1>Will you be my valentine?</h1>
+      {accepted ? (
+        <></>
+      ) : (
+        <>
+          <h1>Will you be my valentine?</h1>
+        </>
+      )}
       <div className="button-container">
-        <button className="yes-btn" onClick={() => setResponse("Yay! ❤️")}>
-          Yes
-        </button>
-        <button className="no-btn" onClick={() => setResponse("Oh no! 😢")}>
-          No
-        </button>
+        {accepted ? (
+          <></>
+        ) : (
+          <>
+            <button
+              className="yes-btn"
+              onClick={() => {
+                setAccepted(true);
+                setResponse("WOOOOOO!!! I love you pookie!! ❤️");
+              }}
+            >
+              Yes 🤍
+            </button>
+            <button
+              className="no-btn"
+              onClick={() => {
+                setRejectedCount(rejectedCount + 1);
+                setResponse(rejectResponses[rejectedCount]);
+              }}
+            >
+              {rejectResponses[rejectedCount] || "C'mon, say YES! 🥰"}
+            </button>
+          </>
+        )}
       </div>
-      {response && <p className="response">{response}</p>}
+      {response && accepted && <p className="response">{response}</p>}
     </div>
   );
 }

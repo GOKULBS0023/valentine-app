@@ -1,6 +1,10 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
   text-align: center;
-  margin-top: 50px;
 }
 
 .panda-img {
@@ -28,12 +32,12 @@ h1 {
 }
 
 .yes-btn {
-  background-color: #28a745;
+  background-color: #ff4191;
   color: white;
 }
 
 .no-btn {
-  background-color: #dc3545;
+  background-color: #000;
   color: white;
 }
 
