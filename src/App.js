@@ -32,14 +32,20 @@ function App() {
     "Gonna miss me!!",
     "C'mon, say YES! 🥰",
   ];
+  const gifLinks = [
+    "https://media.tenor.com/KDqnVi_7tZoAAAAj/panda-love.gif",
+    "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif",
+    "https://media.tenor.com/ns27oDL6PPIAAAAM/cats-cat-with-flower.gif",
+  ];
   const [rejectedCount, setRejectedCount] = useState(0);
   return (
     <div className="container">
       <img
         src={
           accepted
-            ? "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif"
-            : "https://media.tenor.com/KDqnVi_7tZoAAAAj/panda-love.gif"
+            ? "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
+            : gifLinks[rejectedCount] ||
+              "https://media.tenor.com/KDqnVi_7tZoAAAAj/panda-love.gif"
         }
         alt="Cute Panda"
         className="panda-img"
