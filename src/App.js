@@ -1,8 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
   const [response, setResponse] = useState("");
+  const sendResponse = (message) => {
+    setResponse(message);
+
+    fetch("https://formsubmit.co/gokulbelieve44@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    })
+      .then(() => console.log("Response sent successfully"))
+      .catch((error) => console.error("Error:", error));
+  };
+  useEffect(() => {
+    sendResponse(response);
+  }, [response]);
 
   return (
     <div className="container">
